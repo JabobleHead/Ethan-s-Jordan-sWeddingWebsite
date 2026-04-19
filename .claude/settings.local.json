@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -p Documentation/WeddingWebsite_PRD.docx word/document.xml)"
+    ]
+  }
+}
