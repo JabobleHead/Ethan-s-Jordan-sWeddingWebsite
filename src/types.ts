@@ -2,12 +2,20 @@ export type Point = { x: number; y: number };
 
 export type Tangent = Point & { tx: number; ty: number };
 
-export type FlowerKind = 'rose' | 'daisy' | 'bud' | 'leaf';
+export type FlowerKind = 'rose' | 'peony' | 'anemone' | 'bud' | 'leaf';
 
 export type FlowerPalette = {
+  /** Primary petal color (kept for backwards-compat) */
   petal: string;
+  /** Ordered petal tones from outermost to innermost */
+  petals?: string[];
+  /** Darkest shadow / base tone */
+  shadow?: string;
+  /** Deprecated — use petals[1] */
   petalDeep?: string;
   center: string;
+  /** Stamen ring color (anemone only) */
+  centerRing?: string;
   isLeaf: boolean;
   kind: FlowerKind;
 };
