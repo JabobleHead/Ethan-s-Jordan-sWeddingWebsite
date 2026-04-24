@@ -418,7 +418,6 @@ function FaceContent({ pal, photoUrl }: FaceState) {
 
 function Peony({ pal }: { pal: FlowerPalette }) {
   const [p0, p1, p2, p3] = pal.petals ?? [pal.petal, pal.petal, pal.petal, pal.petal];
-  const sh = pal.shadow ?? pal.petalDeep ?? pal.petal;
   return (
     <g>
       {/* outer guard petals */}
