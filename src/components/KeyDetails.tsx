@@ -16,21 +16,29 @@ const DateLine = styled.p`
   margin: 0 0 10px;
 `;
 
-const VenueLine = styled.p`
+const VenueLine = styled.a`
   font-family: ${({ theme }) => theme.fonts.sans};
   font-weight: 300;
   font-style: italic;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.muted};
-  margin: 0;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.burgundy};
+    border-bottom-color: ${({ theme }) => theme.colors.burgundy};
+  }
 `;
 
 export function KeyDetails() {
-  const venueLine = WEDDING.city ? `${WEDDING.venue} · ${WEDDING.city}` : WEDDING.venue;
   return (
     <Wrap>
       <DateLine>{WEDDING.dateDisplay}</DateLine>
-      <VenueLine>{venueLine}</VenueLine>
+      <VenueLine href={WEDDING.mapUrl} target="_blank" rel="noopener noreferrer">
+        {WEDDING.venue} · {WEDDING.address}
+      </VenueLine>
     </Wrap>
   );
 }

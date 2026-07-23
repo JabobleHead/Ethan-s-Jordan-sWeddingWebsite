@@ -37,13 +37,6 @@ const Names = styled.h1`
   line-height: 1.1;
 `;
 
-const Ampersand = styled.span`
-  font-style: italic;
-  font-weight: 400;
-  margin: 0 0.35em;
-  color: ${({ theme }) => theme.colors.burgundy};
-`;
-
 const FlowerSvg = styled.svg<{ $flip?: boolean }>`
   width: clamp(44px, 5vw, 64px);
   height: clamp(44px, 5vw, 64px);
@@ -106,11 +99,7 @@ export function SiteHeader() {
       <Inner>
         <NamesRow>
           <HeaderRose />
-          <Names>
-            {COUPLE.name1}
-            <Ampersand aria-hidden="true">&amp;</Ampersand>
-            {COUPLE.name2}
-          </Names>
+          <Names>{COUPLE.formalTitle}</Names>
           <HeaderRose flip />
         </NamesRow>
         <NavTabs />

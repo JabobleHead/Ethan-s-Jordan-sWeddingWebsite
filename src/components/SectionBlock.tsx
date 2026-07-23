@@ -4,24 +4,22 @@ import type { SectionCopy } from '../types';
 
 type Props = {
   section: SectionCopy;
-  isFirst?: boolean;
   isLast?: boolean;
   children?: ReactNode;
 };
 
-const Section = styled.section<{ $bg: SectionCopy['bg']; $side: SectionCopy['textSide']; $first: boolean }>`
+const Section = styled.section<{ $bg: SectionCopy['bg']; $side: SectionCopy['textSide'] }>`
   position: relative;
   min-height: 100vh;
   background: ${({ theme, $bg }) => theme.colors[$bg]};
   display: flex;
-  align-items: ${({ $first }) => ($first ? 'flex-start' : 'center')};
+  align-items: center;
   justify-content: ${({ $side }) => ($side === 'right' ? 'flex-end' : 'flex-start')};
-  padding: ${({ $first }) => ($first ? 'calc(200px + clamp(320px, 52vh, 560px) + 60px) 8% 80px' : '80px 8%')};
+  padding: 80px 8%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
-    align-items: center;
     justify-content: center;
-    padding: ${({ $first }) => ($first ? '160px 6% 60px' : '60px 6%')};
+    padding: 60px 6%;
   }
 `;
 
@@ -80,9 +78,9 @@ const Hint = styled.div<{ $accent: SectionCopy['accent'] }>`
   }
 `;
 
-export function SectionBlock({ section, isFirst = false, isLast = false, children }: Props) {
+export function SectionBlock({ section, isLast = false, children }: Props) {
   return (
-    <Section $bg={section.bg} $side={section.textSide} $first={isFirst}>
+    <Section $bg={section.bg} $side={section.textSide}>
       <Column>
         <Label $accent={section.accent}>{section.label}</Label>
         <Title>{section.title}</Title>
