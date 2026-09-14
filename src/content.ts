@@ -1,11 +1,5 @@
 import type { SectionCopy } from './types';
 
-export type RegistryLink = {
-  name: string;
-  url: string;
-  description: string;
-};
-
 export const COUPLE = {
   name1: 'Ethan',
   name2: 'Jordan',
@@ -31,10 +25,39 @@ export const CONTACT = {
 
 export const LINKS: {
   rsvp: string;
-  registries: RegistryLink[];
+  rsvpOpen: boolean;
 } = {
   rsvp: 'https://example.com/rsvp',
-  registries: [],
+  rsvpOpen: false,
+};
+
+export type HoneymoonFundMethod = {
+  name: string;
+  handle: string;
+  note?: string;
+  url?: string;
+};
+
+export type HoneymoonFundContact = {
+  name: string;
+  phone: string;
+};
+
+export const HONEYMOON_FUND: {
+  methods: HoneymoonFundMethod[];
+  contacts: HoneymoonFundContact[];
+} = {
+  methods: [
+    { name: 'Venmo', handle: '@jordann088', url: 'https://venmo.com/u/jordann088' },
+    { name: 'Zelle', handle: '(586) 241-8651', note: 'Jordan Sparks' },
+    { name: 'Cash App', handle: '$jordann088', url: 'https://cash.app/$jordann088' },
+    { name: 'Apple Pay', handle: '(586) 241-8651' },
+    { name: 'PayPal', handle: '' },
+  ],
+  contacts: [
+    { name: 'Jordan', phone: '(586) 241-8651' },
+    { name: 'Ethan', phone: '(586) 350-4609' },
+  ],
 };
 
 export const SECTIONS: SectionCopy[] = [
@@ -73,40 +96,44 @@ export type ScheduleItem = {
 
 export const SCHEDULE: ScheduleItem[] = [
   {
-    time: '3:00 PM',
-    label: 'Guests Arrive',
-    detail: 'Please find your seat by 3:45 PM.',
-    confirmed: true,
-  },
-  {
-    time: '4:00 PM',
+    time: '5:00 PM',
     label: 'Wedding Ceremony',
     confirmed: true,
   },
   {
-    time: '4:30 – 5:30 PM',
+    time: '5:30 – 6:30 PM',
     label: 'Cocktail Hour',
     confirmed: true,
   },
   {
-    time: 'Details to come',
+    time: '6:45 PM',
+    label: 'Reception Entrance',
+    confirmed: true,
+  },
+  {
+    time: '7:00 PM',
     label: 'Dinner',
     detail: 'Menu and meal options to be announced.',
-    confirmed: false,
+    confirmed: true,
   },
   {
-    time: 'Details to come',
-    label: 'Reception',
-    confirmed: false,
+    time: '8:00 PM',
+    label: 'Speeches & Toasts',
+    confirmed: true,
   },
   {
-    time: 'Details to come',
-    label: 'Late Night Snack',
-    confirmed: false,
+    time: '8:30 PM',
+    label: 'Dance Floor Opens',
+    confirmed: true,
+  },
+  {
+    time: '9:30 PM',
+    label: 'Cake Cutting & Taco Bar Buffet',
+    confirmed: true,
   },
   {
     time: '11:00 PM',
-    label: 'Send-Off',
+    label: 'Grand Exit',
     confirmed: true,
   },
 ];
@@ -160,7 +187,7 @@ export const FAQ: FaqItem[] = [
   {
     question: 'Will the celebration be indoors or outdoors?',
     answer:
-      'Our ceremony will be held outdoors, followed immediately by an indoor reception — we recommend dressing in layers just in case!',
+      'Our ceremony will be held outdoors, followed immediately by an indoor reception.',
   },
   {
     question: 'Where should I park?',
@@ -199,5 +226,6 @@ export const NAV_ITEMS = [
   { to: '/schedule', label: 'Schedule', end: false },
   { to: '/registry', label: 'Registry', end: false },
   { to: '/wedding-party', label: 'Wedding Party', end: false },
+  { to: '/theme', label: 'Theme', end: false },
   { to: '/faq', label: 'FAQ', end: false },
 ] as const;

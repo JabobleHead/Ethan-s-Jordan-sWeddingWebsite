@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { WEDDING } from '../content';
 
 const Wrap = styled.div`
-  margin: 28px 0 32px;
+  margin: 28px 0 0;
 `;
 
 const DateLine = styled.p`
