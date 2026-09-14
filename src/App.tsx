@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Schedule from './pages/Schedule';
 import Registry from './pages/Registry';
 import WeddingParty from './pages/WeddingParty';
+import WeddingTheme from './pages/WeddingTheme';
 import FAQ from './pages/FAQ';
 
 export function App() {
@@ -22,6 +23,7 @@ export function App() {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/registry" element={<Registry />} />
           <Route path="/wedding-party" element={<WeddingParty />} />
+          <Route path="/theme" element={<WeddingTheme />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
       </BrowserRouter>

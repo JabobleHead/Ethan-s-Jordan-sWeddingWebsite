@@ -6,8 +6,9 @@ import { MobileDrawer } from './MobileDrawer';
 
 const DesktopNav = styled.nav`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 36px;
+  gap: 12px clamp(20px, 3vw, 36px);
   padding: 8px 0 20px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile - 1}px) {

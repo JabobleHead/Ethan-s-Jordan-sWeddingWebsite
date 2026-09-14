@@ -1,6 +1,8 @@
+import { useCallback, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import type { ReactNode } from 'react';
 import { LINKS } from '../content';
+import { RsvpNotice } from './RsvpNotice';
 
 type Variant = 'primary' | 'secondary';
 type Props = { variant: Variant; children?: ReactNode };
@@ -11,6 +13,7 @@ const base = css`
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.15em;
+  line-height: inherit;
   text-transform: uppercase;
   padding: 16px 36px;
   border-radius: 2px;
@@ -44,9 +47,30 @@ const Secondary = styled.a`
 
 export function RsvpButton({ variant, children = 'RSVP' }: Props) {
   const Tag = variant === 'primary' ? Primary : Secondary;
+  const [noticeOpen, setNoticeOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeNotice = useCallback(() => setNoticeOpen(false), []);
+
+  if (LINKS.rsvpOpen) {
+    return (
+      <Tag href={LINKS.rsvp} target="_blank" rel="noopener noreferrer">
+        {children}
+      </Tag>
+    );
+  }
+
   return (
-    <Tag href={LINKS.rsvp} target="_blank" rel="noopener noreferrer">
-      {children}
-    </Tag>
+    <>
+      <Tag
+        as="button"
+        type="button"
+        ref={triggerRef}
+        aria-haspopup="dialog"
+        onClick={() => setNoticeOpen(true)}
+      >
+        {children}
+      </Tag>
+      <RsvpNotice open={noticeOpen} onClose={closeNotice} triggerRef={triggerRef} />
+    </>
   );
 }

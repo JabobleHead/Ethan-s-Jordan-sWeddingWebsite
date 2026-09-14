@@ -123,8 +123,8 @@ export function HeroSlideshow() {
         </HeroHeading>
       </SlideStage>
       <HeroDetails>
-        <KeyDetails />
         <RsvpButton variant="primary">RSVP</RsvpButton>
+        <KeyDetails />
       </HeroDetails>
     </HeroWrap>
   );
