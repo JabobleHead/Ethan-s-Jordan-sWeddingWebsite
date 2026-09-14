@@ -155,7 +155,7 @@ export default function WeddingParty() {
       <Subheading>Standing By Our Side</Subheading>
       <Columns>
         <div>
-          <ColumnLabel $accent="sage">Groomsmen</ColumnLabel>
+          <ColumnLabel $accent="sage">Groom's Side</ColumnLabel>
           <List>
             {GROOMSMEN.map((member) => (
               <MemberCard key={member.slug} member={member} accent="sage" />
@@ -163,7 +163,7 @@ export default function WeddingParty() {
           </List>
         </div>
         <div>
-          <ColumnLabel $accent="berry">Bridesmaids</ColumnLabel>
+          <ColumnLabel $accent="berry">Bride's Side</ColumnLabel>
           <List>
             {BRIDESMAIDS.map((member) => (
               <MemberCard key={member.slug} member={member} accent="berry" />
