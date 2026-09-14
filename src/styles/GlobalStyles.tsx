@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
     inset: 0;
     z-index: -1;
     background-image:
-      linear-gradient(rgba(250, 247, 244, 0.78), rgba(250, 247, 244, 0.78)),
+      linear-gradient(rgba(250, 247, 244, 0.62), rgba(250, 247, 244, 0.62)),
       url(${backgroundImage});
     background-size: cover;
     background-position: center;
