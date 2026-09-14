@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import backgroundImage from '../assets/background.png';
 
 export const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -11,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    position: relative;
     background-color: ${({ theme }) => theme.colors.cream};
     color: ${({ theme }) => theme.colors.ink};
     font-family: ${({ theme }) => theme.fonts.sans};
@@ -19,6 +21,23 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1.85;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Fixed page background. A pseudo-element is used instead of
+     background-attachment: fixed, which iOS Safari ignores. The cream
+     wash keeps dark text readable over the photo. */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(250, 247, 244, 0.78), rgba(250, 247, 244, 0.78)),
+      url(${backgroundImage});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
   }
 
   a {
